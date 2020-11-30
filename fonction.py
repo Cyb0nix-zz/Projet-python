@@ -4,6 +4,7 @@ import simpleaudio as sa
 
 
 def calc_frequency(notes):
+    frequency = {}
     frequency = []
     for note in notes:
         if note == "DO":
@@ -63,8 +64,13 @@ def read_sheet(ligne):
     return notes_durations
 
 
-def play_sheet():
-    # TODO
+def play_sheet(notes,durations):
+    for i in range(len(notes)):
+        print(notes[i], " ", durations[i])
+        if notes[i] == -1:
+            sleep(durations[i])
+        else:
+            sound(notes[i], durations[i])
 
     return
 
