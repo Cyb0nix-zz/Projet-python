@@ -3,24 +3,23 @@ import numpy as np
 import simpleaudio as sa
 
 
-def calc_frequency(notes):
-    frequency = {}
+def calc_frequency(notes,f0):
     frequency = []
     for note in notes:
         if note == "DO":
-            frequency.append(264)
+            frequency.append(f0)
         elif note == "RE":
-            frequency.append(297)
+            frequency.append(f0+33)
         elif note == "MI":
-            frequency.append(330)
+            frequency.append(f0+66)
         elif note == "FA":
-            frequency.append(352)
+            frequency.append(f0+88)
         elif note == "SOL":
-            frequency.append(396)
+            frequency.append(f0+132)
         elif note == "LA":
-            frequency.append(440)
+            frequency.append(f0+176)
         elif note == "SI":
-            frequency.append(495)
+            frequency.append(f0+231)
         elif note == "Z":
             frequency.append(-1)
         elif note == "":
@@ -53,15 +52,16 @@ def read_line_file(f, num):
 
 
 def read_sheet(ligne):
-    notes_durations = [[], []]
+    notes = []
+    durations = []
 
     sheet = ligne.split(" ")
 
     for note in sheet:
-        notes_durations[1].append(note.rstrip()[-1])
-        notes_durations[0].append(note.rstrip()[:-1])
+        durations.append(note.rstrip()[-1])
+        notes.append(note.rstrip()[:-1])
 
-    return notes_durations
+    return notes, durations
 
 
 def play_sheet(notes,durations):
