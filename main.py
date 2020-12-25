@@ -14,6 +14,7 @@ fenetre.config(background="#5B183C")
 img_logo = PhotoImage(file="mozarius.png")
 main_frame = Frame(fenetre, bg="#5B183C")
 
+
 def main(main_frame):
     frame = Frame(main_frame, bg="#5B183C")
     top_frame = Frame(frame, bg="#5B183C")
