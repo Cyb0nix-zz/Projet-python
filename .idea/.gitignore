@@ -1,0 +1,9 @@
+# Default ignored files
+/shelf/
+/workspace.xml
+/discord.xml
+# Datasource local storage ignored files
+/../../../../:\Projet-python\Projet-python\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
