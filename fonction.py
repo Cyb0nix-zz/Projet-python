@@ -1,7 +1,7 @@
 from time import sleep
 import numpy as np
 import simpleaudio as sa
-
+import random
 
 def calc_frequencies(notes, f0):
     #Calcul les fréquences des notes donné en fonction de la fréquence du do
@@ -49,18 +49,18 @@ def calc_duration(figures, d0):
 def read_line_file(f, num):
     #Lit une ligne spécifique du fichier et la retourne sous forme de chaine de caractère
     file = open(f, "r")
-    lignes = file.readlines()
+    lines = file.readlines()
 
-    return lignes[num]
+    return lines[num]
 
 
-def read_sheet(ligne):
+def read_sheet(line):
     #Lit une chaine de caractère correspondant a un morceau et la convertie en une liste de durée et une liste de notes qu'elle retopurne
     notes = []
     durations = []
 
-    sheet = ligne.split(" ")
-
+    sheet = line.split(" ")
+    print(sheet)
     for note in sheet:
         durations.append(note.rstrip()[-1])
         notes.append(note.rstrip()[:-1])
@@ -97,6 +97,17 @@ def get_songs(f):
 
     return list_songs
 
+def inversion(line):
+    line2 = line.copy()
+    for i in range(len(line)):
+        line2[(len(line) - 1) - i] = line[i]
+        return line2
+
+
+
+
+
+
 
 def sound(freq, duration):
     #Joue un sond en fonction d'une fréquence et de la durée
@@ -114,3 +125,4 @@ def sound(freq, duration):
     audio = bytearray(byte_array)
     play_obj = sa.play_buffer(audio, 1, 3, sample_rate)
     play_obj.wait_done()
+
