@@ -14,11 +14,15 @@ SOLn SOLn SIc SOLn REn REc REc REn REc REn SIn SOLn SOLn SOLn SIc SOLn REn REc R
 SIb LAn SOLb SOLn LAn SOLn LAn SIb SOLn SIb LAn SOLb SOLn LAn SIn LAn SOLb REn REn SIn REn REb REn REn SIn REn REb SIn SIn DOn REn LAb SIn SIn DOn REn LAb
 #8 Une souris verte
 SOLc SOLc SOLc LAn SOLn REn SOLc SOLc SOLc LAn SOLn REn DOc SIc LAc SIn DOc SIn LAn DOc SIc LAc SIn DOc SIn LAn SOLc SOLc SOLc LAn SOLn REn SOLc SOLc SOLc LAn SOLn REn
-#9 Ah vous dirai-je maman ?
+#9 Ah vous dirai-je maman ? 
 DOn DOn SOLn SOLn LAn LAn SOLb FAn FAn MIn MIn REn REn DOb SOLn SOLn FAn FAn MIn MIn MIn REn SOLn SOLn FAn FAn MIn MIn MIn REn DOn DOn SOLn SOLn LAn LAn SOLb FAn FAn MIn MIn REn DOb
 #10 Le bon roi Dagobert
 Zn Zn SIn SIb LAn LAb SOLb p SOLb p SIn DOn SIn LAn SOLn LAn SOLb p Zc SOLn LAn SIb SIn SIn DOn REn LAb LAn LAn SOLn LAn SIb SIn SIn DOn REn LAb LAn LAb SIn SIb LAn LAb SOLn SOLb p LAb p SIn DOn SIn LAn SOLn LAn SOLb p
 #11 Bâteau sur l'eau
-MIn DOn MIn DOn REc MIc FAc MIn REc SOLn MIn DOn MIn DOn MIn DOn REc MIc FAc MIn REc SOLn DOn
+MIn DOn MIn DOn REc MIc FAc MIn REc SOLn MIn DOn MIn DOn MIn DOn REc MIc FAc MIn REc SOLn DOn 
 #12 C'est la mère Michel
-FAc p Zb FAn FAc FAn FAc DOn FAc SOLn LAn SOLn FAn Zc FAc MIc p Zb REn MIc FAn SOLc LAn SOLc FAn MIn REn DOb DOn Zc DOc SOLc p Zb SOLn SOLc LAn SIn p SIc LAc FAn DOc LAn SOLn Zc SOLc SIc p Zb SIn SIc SIn LAc FAn FAc FAn SOLn DOn FAc FAc FAc MIn REn REn p Zb REn REc FAn FAc SOLn DAn DOc p Zb DOn DOn Zc DOc FAn LAn DOc SIn LAc SOLn FAc DOn DOc DOn FAc FAn FAc MIn REn REc p Zb REn REc FAn FAc SOLn DOn DOc p Zb SOn DOn Zc DOc FAn LAn DOc SIn LAc SOLn FAc DOn DOc DOn FAn Zn
+FAc p Zb FAn FAc FAn FAc DOn FAc SOLn LAn SOLn FAn Zc FAc MIc p Zb REn MIc FAn SOLc LAn SOLc FAn MIn REn DOb DOn Zc DOc SOLc p Zb SOLn SOLc LAn SIn p SIc LAc FAn DOc LAn SOLn Zc SOLc SIc p Zb SIn SIc SIn LAc FAn FAc FAn SOLn DOn FAc FAc FAc MIn REn REn p Zb REn REc FAn FAc SOLn DOn DOc p Zb DOn DOn Zc DOc FAn LAn DOc SIn LAc SOLn FAc DOn DOc DOn FAc FAn FAc MIn REn REc p Zb REn REc FAn FAc SOLn DOn DOc p Zb SOn DOn Zc DOc FAn LAn DOc SIn LAc SOLn FAc DOn DOc DOn FAn Zn
+#13 Markov 2 | Ah vous dirai-je maman ? |  C'est la mÃ¨re Michel
+SOLb FAn FAc FAc SOLn DOn Zc DOc FAn MIn REn MIc p Zb REn REc FAn FAc DOn FAn FAc DOn DOc p Zb REn REc p Zb REn REn REc FAn FAc SOLn FAn FAc SOLn SOLn SOLn DOn SOLn LAn DOc p Zb FAn FAn FAc SOLn Zc FAc MIn MIn MIn MIn MIn REn SOLn SOLn DOn FAc MIn REn REc p Zb SOn DOn FAc DOn DOc SOLc FAn SOLn DOn DOc SIn LAc FAn FAc MIn MIn REn REc FAn FAc SOLn SOLn SOLn Zc DOc SIn LAc SOLn SOLn LAn DOc DOn FAc SOLn FAc FAn FAc p Zb DOn DOc SOLc SIc LAc SOLn Zc DOc p Zb SIn LAc FAn MIn REn p Zb DOn DOc FAn SOLc LAn SOLb FAn FAn MIn MIn MIn REn REc FAn DOc LAn SOLn DOn DOn FAc DOn DOc LAn DOc p Zb DOn FAc p Zb DOn FAc FAc FAc SOLn DOn DOc FAn LAn SOLn DOn Zc FAc
+#14 Markov | Vive le vent | FrÃ¨res jacques
+DOb p Zn REn MIn MIb SOLn DOn DIn SOLn LAn SIn SOLn LAn SIn DOn REn DOb p Zn FAn FAb FAn MIn MIn SOLn DOn REn MIn MIb SOLn FAn REn DOn SIn SOLn LAn SIn DOn REn MIn MIn REn MIb SOLn LAn SIn DOn REb Zn REn REn REn DOn REb SIn DOn DIn SOLn DOn REb Zn FAn FAb FAn FAn FAb FAn FAb FAn REn MIn SOLn REn DOn SIn DOn DIn SOLn LAn SIn DOn REb Zn FAn

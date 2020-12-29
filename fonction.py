@@ -1,7 +1,10 @@
+# -*- coding: utf-8 -*-
 from time import sleep
 import numpy as np
 import random
 import simpleaudio as sa
+from tkinter import filedialog
+from tkinter import *
 
 
 def calc_frequencies(notes, f0):
@@ -74,7 +77,7 @@ def play_song(f, num, f0, d0):
     # Joue un morceau à partir d'une partition, du numéro du morceau, de la fréquence d'un Do et de la durée d'une
     # croche.
 
-    notes, durations = read_sheet(read_line_file(f, int(num)))
+    notes, durations = read_sheet(read_line_file(f, num))
     play_sheet(calc_frequencies(notes, f0), calc_duration(durations, d0))
 
 
@@ -94,32 +97,68 @@ def get_songs(f):
     # dictionnaire.
     file = open(f, "r", encoding="utf-8")
     lines = file.readlines()
-    list_songs = {}
+    songs = {}
     for line in lines:
         if line[0][0] == "#":
-            list_songs[(line.rstrip()[3:])] = (lines.index(line) + 1)
-
-    return list_songs
+            songs[(line.rstrip()[1:])] = (lines.index(line) + 1)
 
 
-def markov(list_of_songs, f):
+    return songs
+
+def load_songs(songs,list_songs):
+
+    list_songs.delete(0,500)
+    for song in songs.keys():
+        list_songs.insert(END, song)
+    list_songs.select_anchor(0)
+    list_songs.select_set(0)
+
+def get_song_number(list_select,list_songs,songs):
+    songs_numbers = []
+    for nbr in list_select:
+        songs_numbers.append(songs[list_songs.get(nbr)])
+
+    return songs_numbers
+
+
+def inversion(line):
+    print(line)
+    sheet = read_line_file("partitions.txt", line).rstrip().split(" ")
+    name = "#" + str(len(get_songs("partitions.txt")) + 1) + " Inversion " + (
+        read_line_file("partitions.txt", line - 1).rstrip()[3:]) + "\n"
+
+    sheet2 = sheet.copy()
+    for i in range(len(sheet)):
+        sheet2[(len(sheet) - 1) - i] = sheet[i]
+
+    file_2 = open("partitions.txt", "a", encoding="utf-8")
+    file_2.write(name)
+    file_2.write(" ".join(sheet2) + "\n")
+
+
+def markov(list_of_songs):
     songs = ""
     new_song = []
     keys = []
     notes_possible = {}
 
+    name = "#" + str(len(get_songs("partitions.txt")) + 1) + " Markov"
+
     for element in list_of_songs:
-        songs = read_line_file(f, element).rstrip() + " " + songs
+        songs = read_line_file("partitions.txt", element).rstrip() + " " + songs
+        name = name + " | " + (read_line_file("partitions.txt", element-1).rstrip()[3:])
 
     sheet = songs.strip().split(" ")
 
     for i in range(len(sheet) - 1):
         if sheet[i] not in notes_possible:
             notes_possible[sheet[i]] = []
-            notes_possible[sheet[i]].append(sheet[i + 1])
+            if sheet[i + 1] != sheet[-1]:
+                notes_possible[sheet[i]].append(sheet[i + 1])
         else:
             if sheet[i + 1] not in notes_possible[sheet[i]]:
-                notes_possible[sheet[i]].append(sheet[i + 1])
+                if sheet[i + 1] != sheet[-1]:
+                    notes_possible[sheet[i]].append(sheet[i + 1])
 
     for key in notes_possible.keys():
         keys.append(key)
@@ -129,10 +168,12 @@ def markov(list_of_songs, f):
     for i in range(len(sheet) - 1):
         new_song.append(random.choice(notes_possible[new_song[-1]]))
 
-    return " ".join(new_song)
+    file_2 = open("partitions.txt", "a", encoding="utf-8")
+    file_2.write(name + "\n")
+    file_2.write(" ".join(new_song) + "\n")
 
 
-def markov2(list_of_songs, f):
+def markov2(list_of_songs):
     songs = ""
     new_song = []
     max = 0
@@ -140,18 +181,23 @@ def markov2(list_of_songs, f):
     notes_possible = {}
     occurences = {}
 
-    for element in list_of_songs:
-        songs = read_line_file(f, element).rstrip() + " " + songs
+    name = "#" + str(len(get_songs("partitions.txt")) + 1) + " Markov 2"
+
+    for song in list_of_songs:
+        songs = read_line_file("partitions.txt", song).rstrip() + " " + songs
+        name = name + " | " + (read_line_file("partitions.txt", song-1).rstrip()[3:])
 
     sheet = songs.strip().split(" ")
 
     for i in range(len(sheet) - 1):
         if sheet[i] not in notes_possible:
             notes_possible[sheet[i]] = []
-            notes_possible[sheet[i]].append(sheet[i + 1])
+            if sheet[i + 1] != sheet[-1]:
+                notes_possible[sheet[i]].append(sheet[i + 1])
             occurences[sheet[i]] = 1
         else:
-            notes_possible[sheet[i]].append(sheet[i + 1])
+            if sheet[i + 1] != sheet[-1]:
+                notes_possible[sheet[i]].append(sheet[i + 1])
             occurences[sheet[i]] += 1
 
     for element in occurences.keys():
@@ -163,7 +209,9 @@ def markov2(list_of_songs, f):
     for i in range(len(sheet) - 1):
         new_song.append(random.choice(notes_possible[new_song[-1]]))
 
-    return " ".join(new_song)
+    file_2 = open("partitions.txt", "a", encoding="utf-8")
+    file_2.write(name + "\n")
+    file_2.write(" ".join(new_song) + "\n")
 
 
 def sound(freq, duration):
@@ -182,3 +230,15 @@ def sound(freq, duration):
     audio = bytearray(byte_array)
     play_obj = sa.play_buffer(audio, 1, 3, sample_rate)
     play_obj.wait_done()
+
+
+def add_song(fenetre):
+    fenetre.filename = filedialog.askopenfilename(initialdir="/", title="Select file",
+                                                  filetypes=(("texte files", "*.txt"), ("all files", "*.*")))
+
+    file_1 = open(fenetre.filename, "r", encoding="utf-8")
+    file_2 = open("partitions.txt", "a", encoding="utf-8")
+
+    lines_1 = file_1.readlines()
+    for line in lines_1:
+        file_2.write(line)
