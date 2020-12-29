@@ -5,7 +5,6 @@ import random
 import simpleaudio as sa
 from tkinter import filedialog
 from tkinter import *
-import random
 
 def calc_frequencies(notes, f0):
     # Calcul les fréquences des notes donné en fonction de la fréquence du do
@@ -93,7 +92,6 @@ def play_sheet(frequencies, durations):
         else:
             sound(frequencies[i], durations[i])
 
-    return
 
 
 def get_songs(f):
