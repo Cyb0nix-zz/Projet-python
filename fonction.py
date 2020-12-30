@@ -73,23 +73,30 @@ def read_sheet(line):
     return notes, durations
 
 
-def play_song(f, num, f0, d0):
+def play_song(f, num, f0, d0,image_note,notes_images,canva_note):
     # Joue un morceau à partir d'une partition, du numéro du morceau, de la fréquence d'un Do et de la durée d'une
     # croche.
 
     notes, durations = read_sheet(read_line_file(f, num))
-    play_sheet(calc_frequencies(notes, f0), calc_duration(durations, d0))
+    play_sheet(calc_frequencies(notes, f0), calc_duration(durations, d0), notes,image_note,notes_images,canva_note)
 
 
-def play_sheet(frequencies, durations):
-    # Joue un morceau à partir d'une liste de frequences et une liste de durée.
+def play_sheet(frequencies, durations,notes,image_note,notes_images,canva_note):
+    # Joue un morceau à partir d'une liste de frequences et une liste de durée et affiche l'image correpondante à la note.
+    notes_dict = {"DO":0,"RE":1,"MI":2,"FA":3,"SOL":4,"LA":5,"SI":6,"":7,"Z":7}
+
     for i in range(len(frequencies)):
+        canva_note.itemconfigure(image_note, image=notes_images[7])
+        canva_note.update()
+        canva_note.itemconfigure(image_note,image=notes_images[notes_dict[notes[i]]])
+        canva_note.update()
         if frequencies[i] == -1:
             sleep(durations[i])
         else:
             sound(frequencies[i], durations[i])
+    canva_note.itemconfigure(image_note, image=notes_images[7])
+    canva_note.update()
 
-    return
 
 
 def get_songs(f):
@@ -212,6 +219,7 @@ def markov2(list_of_songs):
     file_2 = open("partitions.txt", "a", encoding="utf-8")
     file_2.write(name + "\n")
     file_2.write(" ".join(new_song) + "\n")
+
 
 
 def sound(freq, duration):

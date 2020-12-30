@@ -13,6 +13,17 @@ fenetre.config(background="#5B183C")
 img_logo = PhotoImage(file="mozarius.png")
 main_frame = Frame(fenetre, bg="#5B183C")
 
+Do = PhotoImage(file="Do.png")
+Re = PhotoImage(file="Re.png")
+Mi = PhotoImage(file="Mi.png")
+Fa = PhotoImage(file="Fa.png")
+Sol = PhotoImage(file="Sol.png")
+La = PhotoImage(file="La.png")
+Si = PhotoImage(file="Si.png")
+vide = PhotoImage(file="vide.png")
+
+notes_img = [Do,Re,Mi,Fa,Sol,La,Si,vide]
+
 
 def main(main_frame):
     frame = Frame(main_frame, bg="#5B183C")
@@ -74,17 +85,32 @@ def play(main_frame):
     songs = get_songs("partitions.txt")
     load_songs(songs,list_songs)
 
+    canva_note = Canvas(bottom_frame, width=360, height=210, bd=0, highlightthickness=0)
+    canva_note.grid(row=0, column=1, sticky=NW, padx=20, rowspan=7)
+
+    image_note = canva_note.create_image(0, 0, image=vide, anchor=NW)
+
+    frequency_transpo = Entry(bottom_frame, relief='flat', width=4, textvariable='frequence',exportselection=0,font=("a_FuturaOrto", 22))
+    frequency_transpo.grid(row=6, column=1, sticky=NE, padx=20)
+
+    frequency_transpo.insert(0,0)
+
+    btn_transposition = Button(bottom_frame, text='Transposer', font=("a_FuturaOrto", 14), bg="#FFB997", relief='flat',
+                               width=21,
+                               command=lambda: play_song("partitions.txt", songs[list_songs.get(ANCHOR)], (264 + int(frequency_transpo.get())), 0.125,image_note,notes_img,canva_note))
+    btn_transposition.grid(row=6, column=1, sticky=NW, padx=20)
+
+
     btn_lire = Button(bottom_frame, text='Lire', font=("a_FuturaOrto", 14), bg="#FFB997", relief='flat',
                       width=21,
-                      command=lambda: play_song("partitions.txt", songs[list_songs.get(ANCHOR)], 264, 0.125))
+                      command=lambda: play_song("partitions.txt", songs[list_songs.get(ANCHOR)], 264, 0.125,image_note,notes_img,canva_note))
     btn_lire.grid(row=4, column=0, sticky=NW, padx=10, pady=10)
 
     btn_menu = Button(bottom_frame, text='Menu', font=("a_FuturaOrto", 14), bg="#FFB997", relief='flat',
                       width=21, command=lambda: [main(main_frame), frame_play.destroy()])
-    btn_menu.grid(row=5, column=0, sticky=SW, padx=10)
+    btn_menu.grid(row=6, column=0, sticky=SW, padx=10)
 
-    image = Canvas(bottom_frame, width=360, height=258, bd=0, highlightthickness=0)
-    image.grid(row=0, column=1, sticky=NW, padx=20, rowspan=7)
+
 
     ################ INIT #################
 
