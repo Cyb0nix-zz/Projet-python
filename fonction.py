@@ -6,7 +6,6 @@ import simpleaudio as sa
 from tkinter import filedialog
 from tkinter import *
 
-
 def calc_frequencies(notes, f0):
     # Calcul les fréquences des notes donné en fonction de la fréquence du do
     frequency = []
@@ -59,12 +58,16 @@ def read_line_file(f, num):
 
 
 def read_sheet(line):
+
     # Lit une chaine de caractère correspondant a un morceau et la convertie en une liste de durée et une liste de
     # notes qu'elle retourne
+
     notes = []
     durations = []
 
     sheet = line.split(" ")
+
+
 
     for note in sheet:
         durations.append(note.rstrip()[-1])
@@ -109,8 +112,8 @@ def get_songs(f):
         if line[0][0] == "#":
             songs[(line.rstrip()[1:])] = (lines.index(line) + 1)
 
-
     return songs
+
 
 def load_songs(songs,list_songs):
 
@@ -240,6 +243,7 @@ def sound(freq, duration):
     play_obj.wait_done()
 
 
+
 def add_song(fenetre):
     fenetre.filename = filedialog.askopenfilename(initialdir="/", title="Select file",
                                                   filetypes=(("texte files", "*.txt"), ("all files", "*.*")))
@@ -250,3 +254,4 @@ def add_song(fenetre):
     lines_1 = file_1.readlines()
     for line in lines_1:
         file_2.write(line)
+
