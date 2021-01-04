@@ -375,14 +375,14 @@ def sound(freq, duration):
     Joue un son en fonction d'une fréquence et de la durée
 
     :param freq: liste de fréquences correspondant aux notes du morceau
-    :type freq: list
+    :type freq: int
     :param duration: liste de durée correspondant aux notes du morceau
-    :type freq: list
+    :type freq: int
     """
 
-    sample_rate = 44100
+    sample_rate = 48000
     t = np.linspace(0, duration, int(duration * sample_rate), False)
-    tone = np.sin(freq * t * 6 * np.pi)
+    tone = np.sin(freq * t * 2 * np.pi)
     tone *= 8388607 / np.max(np.abs(tone))
     tone = tone.astype(np.int32)
     i = 0
