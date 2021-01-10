@@ -53,6 +53,7 @@ def calc_duration(figures, d0):
     :return: liste de durée sous forme de réel
     :rtype: list
     """
+
     durations = []
     for figure in figures:
         if figure == "r":
@@ -98,7 +99,7 @@ def read_sheet(line):
     :return: liste de notes, liste de durée
     :rtype: list
     """
-    #
+
     notes = []
     durations = []
 
@@ -165,6 +166,7 @@ def play_sheet(frequencies, durations, notes, image_note, notes_images, canva_no
             sleep(durations[i])
         else:
             sound(frequencies[i], durations[i])
+
     canva_note.itemconfigure(image_note, image=notes_images[7])
     canva_note.update()
 
